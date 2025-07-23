@@ -14,7 +14,175 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      discipulos: {
+        Row: {
+          contato: string | null
+          created_at: string
+          data_inicio_discipulado: string | null
+          dificuldades_areas_crescimento: string | null
+          dons_talentos: string | null
+          id: string
+          last_contact_at: string | null
+          lider_id: string
+          maturidade_espiritual: string
+          nome: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          contato?: string | null
+          created_at?: string
+          data_inicio_discipulado?: string | null
+          dificuldades_areas_crescimento?: string | null
+          dons_talentos?: string | null
+          id?: string
+          last_contact_at?: string | null
+          lider_id: string
+          maturidade_espiritual?: string
+          nome: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          contato?: string | null
+          created_at?: string
+          data_inicio_discipulado?: string | null
+          dificuldades_areas_crescimento?: string | null
+          dons_talentos?: string | null
+          id?: string
+          last_contact_at?: string | null
+          lider_id?: string
+          maturidade_espiritual?: string
+          nome?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      encontros: {
+        Row: {
+          created_at: string
+          data_encontro: string
+          discipulo_id: string
+          id: string
+          lider_id: string
+          notas_discussao: string | null
+          proximos_passos: string | null
+          topico: string | null
+        }
+        Insert: {
+          created_at?: string
+          data_encontro: string
+          discipulo_id: string
+          id?: string
+          lider_id: string
+          notas_discussao?: string | null
+          proximos_passos?: string | null
+          topico?: string | null
+        }
+        Update: {
+          created_at?: string
+          data_encontro?: string
+          discipulo_id?: string
+          id?: string
+          lider_id?: string
+          notas_discussao?: string | null
+          proximos_passos?: string | null
+          topico?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "encontros_discipulo_id_fkey"
+            columns: ["discipulo_id"]
+            isOneToOne: false
+            referencedRelation: "discipulos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pedidos_oracao: {
+        Row: {
+          categoria: string | null
+          created_at: string
+          data_conclusao: string | null
+          data_pedido: string
+          discipulo_id: string | null
+          id: string
+          lider_id: string
+          pedido: string
+          status: string
+          testemunho: string | null
+          updated_at: string
+          urgencia: string
+        }
+        Insert: {
+          categoria?: string | null
+          created_at?: string
+          data_conclusao?: string | null
+          data_pedido?: string
+          discipulo_id?: string | null
+          id?: string
+          lider_id: string
+          pedido: string
+          status?: string
+          testemunho?: string | null
+          updated_at?: string
+          urgencia?: string
+        }
+        Update: {
+          categoria?: string | null
+          created_at?: string
+          data_conclusao?: string | null
+          data_pedido?: string
+          discipulo_id?: string | null
+          id?: string
+          lider_id?: string
+          pedido?: string
+          status?: string
+          testemunho?: string | null
+          updated_at?: string
+          urgencia?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pedidos_oracao_discipulo_id_fkey"
+            columns: ["discipulo_id"]
+            isOneToOne: false
+            referencedRelation: "discipulos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      users_profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          nome: string
+          tipo_lider: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          nome: string
+          tipo_lider?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          nome?: string
+          tipo_lider?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
