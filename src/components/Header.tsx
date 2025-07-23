@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 export const Header = () => {
+  const { user, signOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
@@ -35,8 +37,21 @@ export const Header = () => {
           
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost">Entrar</Button>
-            <Button variant="default">Começar Grátis</Button>
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <span className="text-sm text-muted-foreground">
+                  Olá, {user.email}
+                </span>
+                <Button variant="outline" onClick={signOut}>
+                  Sair
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Button variant="ghost" onClick={() => window.location.href = '/auth'}>Entrar</Button>
+                <Button variant="default" onClick={() => window.location.href = '/auth'}>Começar Grátis</Button>
+              </>
+            )}
           </div>
           
           {/* Mobile Menu Button */}
@@ -64,8 +79,21 @@ export const Header = () => {
               </a>
             ))}
             <div className="flex flex-col space-y-2 pt-4">
-              <Button variant="ghost" className="w-full">Entrar</Button>
-              <Button variant="default" className="w-full">Começar Grátis</Button>
+              {user ? (
+                <div className="space-y-2">
+                  <span className="text-sm text-muted-foreground block">
+                    Olá, {user.email}
+                  </span>
+                  <Button variant="outline" className="w-full" onClick={signOut}>
+                    Sair
+                  </Button>
+                </div>
+              ) : (
+                <>
+                  <Button variant="ghost" className="w-full" onClick={() => window.location.href = '/auth'}>Entrar</Button>
+                  <Button variant="default" className="w-full" onClick={() => window.location.href = '/auth'}>Começar Grátis</Button>
+                </>
+              )}
             </div>
           </div>
         </div>
