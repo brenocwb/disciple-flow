@@ -8,6 +8,10 @@ import { ProtectedRoute } from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/Dashboard";
+import Discipulos from "./pages/Discipulos";
+import Encontros from "./pages/Encontros";
+import Oracao from "./pages/Oracao";
 
 const queryClient = new QueryClient();
 
@@ -20,9 +24,25 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/auth" element={<Auth />} />
+            <Route path="/landing" element={<Index />} />
             <Route path="/" element={
               <ProtectedRoute>
-                <Index />
+                <Dashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/discipulos" element={
+              <ProtectedRoute>
+                <Discipulos />
+              </ProtectedRoute>
+            } />
+            <Route path="/encontros" element={
+              <ProtectedRoute>
+                <Encontros />
+              </ProtectedRoute>
+            } />
+            <Route path="/oracao" element={
+              <ProtectedRoute>
+                <Oracao />
               </ProtectedRoute>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

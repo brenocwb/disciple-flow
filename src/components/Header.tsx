@@ -7,7 +7,12 @@ export const Header = () => {
   const { user, signOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navigation = [
+  const navigation = user ? [
+    { name: "Dashboard", href: "/" },
+    { name: "Discípulos", href: "/discipulos" },
+    { name: "Encontros", href: "/encontros" },
+    { name: "Oração", href: "/oracao" }
+  ] : [
     { name: "Funcionalidades", href: "#features" },
     { name: "Benefícios", href: "#benefits" },
     { name: "Preços", href: "#pricing" },
@@ -29,6 +34,12 @@ export const Header = () => {
                 key={item.name}
                 href={item.href}
                 className="text-foreground hover:text-primary transition-colors"
+                onClick={(e) => {
+                  if (user && !item.href.startsWith('#')) {
+                    e.preventDefault();
+                    window.location.href = item.href;
+                  }
+                }}
               >
                 {item.name}
               </a>
@@ -73,7 +84,13 @@ export const Header = () => {
                 key={item.name}
                 href={item.href}
                 className="block text-foreground hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => {
+                  setIsMenuOpen(false);
+                  if (user && !item.href.startsWith('#')) {
+                    e.preventDefault();
+                    window.location.href = item.href;
+                  }
+                }}
               >
                 {item.name}
               </a>
