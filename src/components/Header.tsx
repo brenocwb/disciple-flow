@@ -11,7 +11,10 @@ export const Header = () => {
     { name: "Dashboard", href: "/" },
     { name: "Discípulos", href: "/discipulos" },
     { name: "Encontros", href: "/encontros" },
-    { name: "Oração", href: "/oracao" }
+    { name: "Oração", href: "/oracao" },
+    { name: "Planos", href: "/planos" },
+    { name: "Alertas", href: "/alertas" },
+    { name: "Mapa", href: "/mapa" }
   ] : [
     { name: "Funcionalidades", href: "#features" },
     { name: "Benefícios", href: "#benefits" },

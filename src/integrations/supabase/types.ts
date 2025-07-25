@@ -14,44 +14,104 @@ export type Database = {
   }
   public: {
     Tables: {
+      alertas: {
+        Row: {
+          ativo: boolean
+          created_at: string
+          data_alerta: string
+          discipulo_id: string | null
+          id: string
+          lider_id: string
+          lido: boolean
+          mensagem: string
+          tipo: string
+          titulo: string
+        }
+        Insert: {
+          ativo?: boolean
+          created_at?: string
+          data_alerta: string
+          discipulo_id?: string | null
+          id?: string
+          lider_id: string
+          lido?: boolean
+          mensagem: string
+          tipo: string
+          titulo: string
+        }
+        Update: {
+          ativo?: boolean
+          created_at?: string
+          data_alerta?: string
+          discipulo_id?: string | null
+          id?: string
+          lider_id?: string
+          lido?: boolean
+          mensagem?: string
+          tipo?: string
+          titulo?: string
+        }
+        Relationships: []
+      }
       discipulos: {
         Row: {
+          cep: string | null
+          cidade: string | null
           contato: string | null
           created_at: string
           data_inicio_discipulado: string | null
           dificuldades_areas_crescimento: string | null
           dons_talentos: string | null
+          endereco: string | null
+          estado: string | null
+          grupo_celula: string | null
           id: string
           last_contact_at: string | null
+          latitude: number | null
           lider_id: string
+          longitude: number | null
           maturidade_espiritual: string
           nome: string
           status: string
           updated_at: string
         }
         Insert: {
+          cep?: string | null
+          cidade?: string | null
           contato?: string | null
           created_at?: string
           data_inicio_discipulado?: string | null
           dificuldades_areas_crescimento?: string | null
           dons_talentos?: string | null
+          endereco?: string | null
+          estado?: string | null
+          grupo_celula?: string | null
           id?: string
           last_contact_at?: string | null
+          latitude?: number | null
           lider_id: string
+          longitude?: number | null
           maturidade_espiritual?: string
           nome: string
           status?: string
           updated_at?: string
         }
         Update: {
+          cep?: string | null
+          cidade?: string | null
           contato?: string | null
           created_at?: string
           data_inicio_discipulado?: string | null
           dificuldades_areas_crescimento?: string | null
           dons_talentos?: string | null
+          endereco?: string | null
+          estado?: string | null
+          grupo_celula?: string | null
           id?: string
           last_contact_at?: string | null
+          latitude?: number | null
           lider_id?: string
+          longitude?: number | null
           maturidade_espiritual?: string
           nome?: string
           status?: string
@@ -96,6 +156,53 @@ export type Database = {
             columns: ["discipulo_id"]
             isOneToOne: false
             referencedRelation: "discipulos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      etapas_plano: {
+        Row: {
+          atividades_sugeridas: string | null
+          created_at: string
+          descricao: string | null
+          duracao_estimada_dias: number | null
+          id: string
+          nome: string
+          ordem: number
+          plano_id: string
+          recursos_necessarios: string | null
+          versiculos_chave: string | null
+        }
+        Insert: {
+          atividades_sugeridas?: string | null
+          created_at?: string
+          descricao?: string | null
+          duracao_estimada_dias?: number | null
+          id?: string
+          nome: string
+          ordem: number
+          plano_id: string
+          recursos_necessarios?: string | null
+          versiculos_chave?: string | null
+        }
+        Update: {
+          atividades_sugeridas?: string | null
+          created_at?: string
+          descricao?: string | null
+          duracao_estimada_dias?: number | null
+          id?: string
+          nome?: string
+          ordem?: number
+          plano_id?: string
+          recursos_necessarios?: string | null
+          versiculos_chave?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_etapas_plano_plano_id"
+            columns: ["plano_id"]
+            isOneToOne: false
+            referencedRelation: "planos_discipulado"
             referencedColumns: ["id"]
           },
         ]
@@ -149,6 +256,106 @@ export type Database = {
             columns: ["discipulo_id"]
             isOneToOne: false
             referencedRelation: "discipulos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      planos_discipulado: {
+        Row: {
+          ativo: boolean
+          created_at: string
+          descricao: string | null
+          duracao_estimada_dias: number | null
+          id: string
+          lider_id: string
+          nivel_maturidade: string
+          nome: string
+          updated_at: string
+        }
+        Insert: {
+          ativo?: boolean
+          created_at?: string
+          descricao?: string | null
+          duracao_estimada_dias?: number | null
+          id?: string
+          lider_id: string
+          nivel_maturidade?: string
+          nome: string
+          updated_at?: string
+        }
+        Update: {
+          ativo?: boolean
+          created_at?: string
+          descricao?: string | null
+          duracao_estimada_dias?: number | null
+          id?: string
+          lider_id?: string
+          nivel_maturidade?: string
+          nome?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      progresso_discipulo: {
+        Row: {
+          created_at: string
+          data_conclusao: string | null
+          data_inicio: string | null
+          discipulo_id: string
+          etapa_id: string
+          id: string
+          lider_id: string
+          observacoes: string | null
+          plano_id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          data_conclusao?: string | null
+          data_inicio?: string | null
+          discipulo_id: string
+          etapa_id: string
+          id?: string
+          lider_id: string
+          observacoes?: string | null
+          plano_id: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          data_conclusao?: string | null
+          data_inicio?: string | null
+          discipulo_id?: string
+          etapa_id?: string
+          id?: string
+          lider_id?: string
+          observacoes?: string | null
+          plano_id?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_progresso_discipulo_id"
+            columns: ["discipulo_id"]
+            isOneToOne: false
+            referencedRelation: "discipulos"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_progresso_etapa_id"
+            columns: ["etapa_id"]
+            isOneToOne: false
+            referencedRelation: "etapas_plano"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_progresso_plano_id"
+            columns: ["plano_id"]
+            isOneToOne: false
+            referencedRelation: "planos_discipulado"
             referencedColumns: ["id"]
           },
         ]

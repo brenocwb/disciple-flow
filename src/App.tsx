@@ -12,6 +12,9 @@ import Dashboard from "./pages/Dashboard";
 import Discipulos from "./pages/Discipulos";
 import Encontros from "./pages/Encontros";
 import Oracao from "./pages/Oracao";
+import Planos from "./pages/Planos";
+import Alertas from "./pages/Alertas";
+import Mapa from "./pages/Mapa";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +46,21 @@ const App = () => (
             <Route path="/oracao" element={
               <ProtectedRoute>
                 <Oracao />
+              </ProtectedRoute>
+            } />
+            <Route path="/planos" element={
+              <ProtectedRoute>
+                <Planos />
+              </ProtectedRoute>
+            } />
+            <Route path="/alertas" element={
+              <ProtectedRoute>
+                <Alertas />
+              </ProtectedRoute>
+            } />
+            <Route path="/mapa" element={
+              <ProtectedRoute>
+                <Mapa />
               </ProtectedRoute>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
