@@ -207,6 +207,207 @@ export type Database = {
           },
         ]
       }
+      group_meetings: {
+        Row: {
+          anotacoes_reuniao: string | null
+          created_at: string
+          data_reuniao: string
+          decisoes_fe: number | null
+          group_id: string
+          id: string
+          lider_id: string
+          observacoes: string | null
+          tema_estudo: string | null
+          total_presentes: number | null
+          total_visitantes: number | null
+          updated_at: string
+          versiculo_base: string | null
+        }
+        Insert: {
+          anotacoes_reuniao?: string | null
+          created_at?: string
+          data_reuniao: string
+          decisoes_fe?: number | null
+          group_id: string
+          id?: string
+          lider_id: string
+          observacoes?: string | null
+          tema_estudo?: string | null
+          total_presentes?: number | null
+          total_visitantes?: number | null
+          updated_at?: string
+          versiculo_base?: string | null
+        }
+        Update: {
+          anotacoes_reuniao?: string | null
+          created_at?: string
+          data_reuniao?: string
+          decisoes_fe?: number | null
+          group_id?: string
+          id?: string
+          lider_id?: string
+          observacoes?: string | null
+          tema_estudo?: string | null
+          total_presentes?: number | null
+          total_visitantes?: number | null
+          updated_at?: string
+          versiculo_base?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "group_meetings_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "house_groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      group_members: {
+        Row: {
+          ativo: boolean
+          created_at: string
+          data_ingresso: string
+          funcao: string | null
+          group_id: string
+          id: string
+          member_id: string
+          observacoes: string | null
+          updated_at: string
+        }
+        Insert: {
+          ativo?: boolean
+          created_at?: string
+          data_ingresso?: string
+          funcao?: string | null
+          group_id: string
+          id?: string
+          member_id: string
+          observacoes?: string | null
+          updated_at?: string
+        }
+        Update: {
+          ativo?: boolean
+          created_at?: string
+          data_ingresso?: string
+          funcao?: string | null
+          group_id?: string
+          id?: string
+          member_id?: string
+          observacoes?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "group_members_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "house_groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      house_groups: {
+        Row: {
+          ativo: boolean
+          cep: string | null
+          cidade: string | null
+          created_at: string
+          dia_semana: number
+          endereco: string
+          estado: string | null
+          horario: string
+          id: string
+          igreja_id: string | null
+          latitude: number | null
+          lider_id: string
+          longitude: number | null
+          maximo_membros: number | null
+          nome: string
+          observacoes: string | null
+          updated_at: string
+        }
+        Insert: {
+          ativo?: boolean
+          cep?: string | null
+          cidade?: string | null
+          created_at?: string
+          dia_semana: number
+          endereco: string
+          estado?: string | null
+          horario: string
+          id?: string
+          igreja_id?: string | null
+          latitude?: number | null
+          lider_id: string
+          longitude?: number | null
+          maximo_membros?: number | null
+          nome: string
+          observacoes?: string | null
+          updated_at?: string
+        }
+        Update: {
+          ativo?: boolean
+          cep?: string | null
+          cidade?: string | null
+          created_at?: string
+          dia_semana?: number
+          endereco?: string
+          estado?: string | null
+          horario?: string
+          id?: string
+          igreja_id?: string | null
+          latitude?: number | null
+          lider_id?: string
+          longitude?: number | null
+          maximo_membros?: number | null
+          nome?: string
+          observacoes?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      meeting_attendance: {
+        Row: {
+          created_at: string
+          id: string
+          meeting_id: string
+          member_id: string
+          motivo_ausencia: string | null
+          observacoes: string | null
+          presente: boolean
+          visitante: boolean
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          meeting_id: string
+          member_id: string
+          motivo_ausencia?: string | null
+          observacoes?: string | null
+          presente?: boolean
+          visitante?: boolean
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          meeting_id?: string
+          member_id?: string
+          motivo_ausencia?: string | null
+          observacoes?: string | null
+          presente?: boolean
+          visitante?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meeting_attendance_meeting_id_fkey"
+            columns: ["meeting_id"]
+            isOneToOne: false
+            referencedRelation: "group_meetings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       pedidos_oracao: {
         Row: {
           categoria: string | null

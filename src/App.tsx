@@ -15,6 +15,8 @@ import Oracao from "./pages/Oracao";
 import Planos from "./pages/Planos";
 import Alertas from "./pages/Alertas";
 import Mapa from "./pages/Mapa";
+import Grupos from "./pages/Grupos";
+import Reunioes from "./pages/Reunioes";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +63,16 @@ const App = () => (
             <Route path="/mapa" element={
               <ProtectedRoute>
                 <Mapa />
+              </ProtectedRoute>
+            } />
+            <Route path="/grupos" element={
+              <ProtectedRoute>
+                <Grupos />
+              </ProtectedRoute>
+            } />
+            <Route path="/reunioes" element={
+              <ProtectedRoute>
+                <Reunioes />
               </ProtectedRoute>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

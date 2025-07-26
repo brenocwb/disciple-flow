@@ -10,6 +10,8 @@ export const Header = () => {
   const navigation = user ? [
     { name: "Dashboard", href: "/" },
     { name: "Discípulos", href: "/discipulos" },
+    { name: "Grupos", href: "/grupos" },
+    { name: "Reuniões", href: "/reunioes" },
     { name: "Encontros", href: "/encontros" },
     { name: "Oração", href: "/oracao" },
     { name: "Planos", href: "/planos" },
