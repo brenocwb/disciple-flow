@@ -15,6 +15,9 @@ export const Header = () => {
     { name: "Encontros", href: "/encontros" },
     { name: "Oração", href: "/oracao" },
     { name: "Planos", href: "/planos" },
+    { name: "Meus Planos", href: "/meus-planos" },
+    { name: "Progresso", href: "/progresso-discipulos" },
+    { name: "Buscar Grupos", href: "/buscar-grupos" },
     { name: "Alertas", href: "/alertas" },
     { name: "Mapa", href: "/mapa" }
   ] : [

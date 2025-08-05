@@ -17,6 +17,9 @@ import Alertas from "./pages/Alertas";
 import Mapa from "./pages/Mapa";
 import Grupos from "./pages/Grupos";
 import Reunioes from "./pages/Reunioes";
+import MeusPlanos from "./pages/MeusPlanos";
+import ProgressoDiscipulos from "./pages/ProgressoDiscipulos";
+import BuscarGrupos from "./pages/BuscarGrupos";
 
 const queryClient = new QueryClient();
 
@@ -73,6 +76,21 @@ const App = () => (
             <Route path="/reunioes" element={
               <ProtectedRoute>
                 <Reunioes />
+              </ProtectedRoute>
+            } />
+            <Route path="/meus-planos" element={
+              <ProtectedRoute>
+                <MeusPlanos />
+              </ProtectedRoute>
+            } />
+            <Route path="/progresso-discipulos" element={
+              <ProtectedRoute>
+                <ProgressoDiscipulos />
+              </ProtectedRoute>
+            } />
+            <Route path="/buscar-grupos" element={
+              <ProtectedRoute>
+                <BuscarGrupos />
               </ProtectedRoute>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
